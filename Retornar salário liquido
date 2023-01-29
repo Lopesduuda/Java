@@ -1,0 +1,64 @@
+package entities;
+
+public class Employee {
+
+	public String name;
+	public double grossSalary;
+	public double tax;
+	
+	public double netSalary() {
+		return grossSalary - tax;
+	}
+	
+	public void increaseSalary(double percentage) {
+		grossSalary += (grossSalary * percentage) / 100;
+		}
+	
+	public String toString() {
+		return "Employee: " 
+				+ name 
+				+ ", $ "
+				+ String.format("%.2f",netSalary());
+	}
+}
+
+/////
+
+package exercFixacao;
+
+import java.util.Locale;
+import java.util.Scanner;
+
+import entities.Employee;
+
+public class exercicio2_funcionario {
+
+	public static void main(String[] args) {
+		Locale.setDefault(Locale.US);
+		Scanner sc = new Scanner(System.in);
+		
+		Employee employee = new Employee();
+		
+		System.out.println("Name: ");
+		employee.name = sc.nextLine();
+		
+		System.out.println("Gross Salary: ");
+		employee.grossSalary = sc.nextDouble();
+		
+		System.out.println("Tax: ");
+		employee.tax = sc.nextDouble();
+		
+		System.out.println(employee);
+		
+		System.out.println("Which percentage to increase salary? ");
+		double percentage = sc.nextDouble();
+		employee.increaseSalary(percentage);
+		
+		System.out.println();
+		System.out.println(employee);
+		
+		sc.close();
+
+	}
+
+}
