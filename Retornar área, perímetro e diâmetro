@@ -1,0 +1,61 @@
+package entities;
+
+public class Rectangle {
+
+	public double width;
+	public double heigth;
+	
+	public double area() {
+		return width * heigth; 
+	}
+	
+	public double perimeter() {
+		return (width * 2.0) + (heigth * 2);
+	}
+	
+	public double diagonal() {
+		double w = Math.pow(width, 2);
+		double h = Math.pow(heigth, 2);
+		return Math.sqrt(w + h);
+	}
+	
+	public String toString() {
+		return "Area: "
+				+ String.format("%.2f", area())
+				+ String.format("%n")
+				+ "Perimeter: "
+				+ String.format("%.2f", perimeter())
+				+ String.format("%n")
+				+ "Diagonal: "
+				+ String.format("%.2f", diagonal());
+	}
+}
+
+
+package exercFixacao;
+
+import java.util.Locale;
+import java.util.Scanner;
+
+import entities.Rectangle;
+
+public class exercicio1_retangulo {
+
+	public static void main(String[] args) {
+		Locale.setDefault(Locale.US);
+		Scanner sc = new Scanner(System.in);
+
+		Rectangle rectangle = new Rectangle();
+		
+		System.out.println("Enter rectangle whidth and heigth: ");
+		rectangle.width = sc.nextDouble();
+		rectangle.heigth = sc.nextDouble();
+		
+		System.out.println();
+		System.out.println(rectangle);
+		
+		sc.close();
+
+	}
+
+}
